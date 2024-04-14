@@ -1,4 +1,5 @@
-HTML_PROOFER_OPTIONS=
+HTML_PROOFER_OPTIONS_INDEX=--disable_external
+HTML_PROOFER_OPTIONS_ALL=--disable_external --no_enforce_https --no_check_internal_hash --ignore_empty_alt --ignore_missing_alt --swap_attributes '{ "img": [["data-src", "src"]] }'
 undefine BUNDLE_APP_CONFIG # let bundler use config from .bundle; in bash it would be 'unset BUNDLE_APP_CONFIG'
 
 .DEFAULT_GOAL := all
@@ -20,7 +21,8 @@ build: clean
 
 .PHONY: check
 check:
-	bundle exec htmlproofer _site/index.html $(HTML_PROOFER_OPTIONS)
+	bundle exec htmlproofer _site/index.html $(HTML_PROOFER_OPTIONS_INDEX)
+	bundle exec htmlproofer _site $(HTML_PROOFER_OPTIONS_ALL)
 
 .PHONY: run
 run: clean
