@@ -6,24 +6,23 @@ V tomto repositáři najdete naše prezentace z konferencí, setkání a další
 
 ## Úpravy obsahu
 
-### Příprava
-Abyste byli schopni spustit níže uvedené příkazy, je nutné mít nainstalované [Ruby 3.1](https://www.ruby-lang.org/en/documentation/installation/) a GNU Make.
+### 📋 Požadavky
+* Na počítači nainstalovaný [Podman](https://podman.io/) nebo [Docker](https://www.docker.com/) a GNU Make.
+* Před prvním spuštěním si nainstalujte potřebné moduly pomocí příkazu:
+    ```bash
+    make prepare
+    ```
+  Tento příkaz je potřeba spustit také po každé změně v souboru `Gemfile`.
 
-Před prvním sestavením (nebo po změně souboru `Gemfile`) je potřeba stáhnout potřebné závislosti.
-```
-$ make prepare
-```
-
-### Náhled
-Při úpravách vzhledu i obsahu je dobré rovnou se podívat na výsledek. Níže uvedený příkaz sestaví obsah repositáře a zpřístupní ho na lokální adrese http://localhost:4000/.
-```
-$ make run
-```
-Příkaz stačí spustit jednou v samostatném terminálu a nechat běžet. Pokud pak ve zdrojových souborech provedete nějakou změnu, Jekyll sestaví stránky znovu. Pro zobrazení efektu změn stačí obnovit načtenou stránku v prohlížeči (*F5*).
-
-## Sestavení statické verze
+### 🔧 Sestavení
 Pro sestavení webu slouží tento příkaz.
+```bash
+make build # sestaví statický obsah stránek do adresáře `_site`
 ```
-$ make build
+
+### 🔍 Lokální náhled
+Při úpravách vzhledu i obsahu je dobré se rovnou podívat na výsledek. Níže uvedený příkaz web spustí a zpřístupní ho na lokální adrese http://localhost:4000/.
+```bash
+make run
 ```
-Statická verze stránek je vygenerovaná do adresáře `_site`. Pro nasazení stačí jeho obsah nahrát na server třeba přes FTP.
+Příkaz stačí spustit jednou v samostatném terminálu a nechat běžet. Změny provedené ve zdrojových souborech (vyjma `_config.yml`) spustí nové sestavení a stránku stačí obnovit v prohlížeči (*F5*).
